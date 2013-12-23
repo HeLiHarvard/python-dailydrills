@@ -6,7 +6,7 @@ tree_info = (input('Tree info: ')).split()
 
 tree_base = int(tree_info[0])
 
-if !(tree_base % 2):
+if not (tree_base % 2):
     sys.exit("Please enter an odd number")
 
 trunk_char = tree_info[1]
