@@ -16,9 +16,9 @@ i = 1 #variable to count for how many tree layers to draw in while loop
 
 while i <= tree_base:
     spaces = int((tree_base - i) / 2)
-    print((' ' * spaces) + (leaf_char * i) + (' ' * spaces))
+    print((' ' * spaces) + (leaf_char * i))
     i += 2
 
 spaces = int((tree_base - 3) / 2)
 
-print ((' ' * spaces) + (trunk_char * 3) + (' ' * spaces))
+print ((' ' * spaces) + (trunk_char * 3))
