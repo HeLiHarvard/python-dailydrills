@@ -24,37 +24,32 @@ for i in range(n):
 
 winner = ''
 loser = ''
-least_votes = n
+r = 0
 
-#ENTIRE VOTE TOTALING ALGORITHM NEEDS TO BE CHANGED
-
-#for i in range(m):
-
-while winner == '':
-    print("Round " + str(i) + ": ", end = '')
-    for j in range(n):
-        for i in range(m):
-            if candidates[int(ballots[j][i])] in vote_tracker:
-                vote_tracker[candidates[int(ballots[j][i])]] += 1
+while (winner == ''):
+    r += 1
+    least_votes = n
+    print("Round " + str(r) + ": ", end = '')
+    for i in range(n):
+        for j in range(m):
+            if candidates[int(ballots[i][j])] in vote_tracker:
+                vote_tracker[candidates[int(ballots[i][j])]] += 1
                 break
 
-    vote_tracker = OrderedDict(sorted(vote_tracker.items(),
-                                     key = lambda t: t[1]))
+    vote_tracker =  OrderedDict(reversed(sorted(vote_tracker.items(), key = lambda t: t[1])))
+
     for c in vote_tracker.items():
         print(str(100 * c[1] / n) + '% ' + c[0], end = ', ')
         if c[1] > n / 2:
             winner = c[0]
-            print(winner + ' is the winner')
-            break
         if c[1] < least_votes:
             least_votes = c[1]
             loser = c[0]
     if winner != '':
         break
     del(vote_tracker[loser])
-    for k in vote_tracker.items():
+    for k, v in vote_tracker.items():
         vote_tracker[k] = 0
+    print('')
 
-
-
-
+print('\n' + winner + ' is the winner')
